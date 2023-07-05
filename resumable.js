@@ -291,40 +291,6 @@
 			var dirReader = directory.createReader();
 			var allEntries = [];
 
-			// // Resolved when the entire directory is traversed
-			// return new Promise((resolveDirectory) => {
-			// 	const iterationAttempts = [];
-			// 	const errorHandler = () => {};
-			// 	const readEntries = () => {
-			// 		// According to the FileSystem API spec, readEntries() must be called until
-			// 		// it calls the callback with an empty array.
-			// 		dirReader.readEntries((batchEntries) => {
-			// 			if (!batchEntries.length) {
-			// 				// Done iterating this particular directory
-			// 				resolveDirectory(Promise.all(iterationAttempts));
-			// 			} else {
-			// 				// Add a list of promises for each directory entry.  If the entry is itself
-			// 				// a directory, then that promise won't resolve until it is fully traversed.
-			// 				iterationAttempts.push(
-			// 					Promise.all(
-			// 						batchEntries.map((batchEntry) => {
-			// 							if (batchEntry.isDirectory) {
-			//                 processItem.bind(null, batchEntries, path, items);
-			// 								return processDirectory(batchEntry);
-			// 							}
-			// 							return Promise.resolve(batchEntry);
-			// 						})
-			// 					)
-			// 				);
-			// 				// Try calling readEntries() again for the same dir, according to spec
-			// 				readEntries();
-			// 			}
-			// 		}, errorHandler);
-			// 	};
-			// 	// initial call to recursive entry reader function
-			// 	readEntries();
-			// });
-
 			function readEntries() {
 				dirReader.readEntries(function (entries) {
 					if (entries.length) {
